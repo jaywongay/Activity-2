@@ -13,16 +13,25 @@ import { AuthenticationModule } from './authentication/authentication.module';
       isGlobal: true,
       envFilePath: '.env',
     }),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: process.env.DB_HOST || 'localhost',
-      port: parseInt(process.env.DB_PORT || '3306'),
-      username: process.env.DB_USERNAME || 'root',
-      password: process.env.DB_PASSWORD || '',
-      database: process.env.DB_DATABASE || 'notes_app',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
-    }),
+    TypeOrmModule.forRoot(
+      process.env.DB_TYPE === 'sqlite'
+        ? {
+            type: 'sqlite',
+            database: process.env.DB_DATABASE || 'database.sqlite',
+            entities: [__dirname + '/**/*.entity{.ts,.js}'],
+            synchronize: true,
+          }
+        : {
+            type: 'mysql',
+            host: process.env.DB_HOST || 'localhost',
+            port: parseInt(process.env.DB_PORT || '3306'),
+            username: process.env.DB_USERNAME || 'root',
+            password: process.env.DB_PASSWORD || '',
+            database: process.env.DB_DATABASE || 'notes_app',
+            entities: [__dirname + '/**/*.entity{.ts,.js}'],
+            synchronize: true,
+          },
+    ),
     NotesModule,
     UsersModule,
     AuthenticationModule,
