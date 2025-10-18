@@ -1,10 +1,10 @@
 ## Notes App (React + NestJS)
-Personal notes application with login, registration, email-based password reset, and CRUD for notes. Defaults to SQLite (no XAMPP needed). MySQL is optional.
+Personal notes application with login, registration, email-based password reset, and CRUD for notes. Uses SQLite.
 
 ### Tech Stack
 - Frontend: React, React Router, CSS
 - Backend: NestJS, TypeScript, TypeORM
-- Database: SQLite by default, MySQL optional
+- Database: SQLite
 - Auth & Mail: JWT, bcrypt, Nodemailer (Gmail SMTP)
 
 ---
@@ -53,35 +53,18 @@ Personal notes application with login, registration, email-based password reset,
 
 ---
 
-## Optional: Switch to MySQL
-If you prefer MySQL (e.g., with XAMPP or Docker), replace the DB section of `backend/.env` with:
-```
-DB_TYPE=mysql
-DB_HOST=localhost
-DB_PORT=3306
-DB_USERNAME=root
-DB_PASSWORD=
-DB_DATABASE=notes_app
-DB_NAME=notes_app
-```
-Ensure MySQL is running and the `notes_app` database exists. TypeORM `synchronize=true` will create tables automatically.
-
----
-
 ## Project Structure
 ```
 activity_2/
 ├── backend/            # NestJS API (TypeORM, Auth, Mail)
-├── frontend/           # React app
-└── database/           # SQL scripts (optional)
+└── frontend/           # React app
 ```
 
 ---
 
 ## Environment Variables (backend)
-- DB_TYPE: `sqlite` or `mysql`
+- DB_TYPE: `sqlite`
 - DB_DATABASE: SQLite file name (e.g., `database.sqlite`)
-- DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD: used when `DB_TYPE=mysql`
 - JWT_SECRET: secret key for signing JWTs
 - EMAIL_USER, EMAIL_PASSWORD: Gmail credentials (use Google App Password)
 - FRONTEND_URL: base URL for email links (e.g., password reset)
@@ -131,14 +114,9 @@ Main endpoints:
 - React error “react-scripts not recognized”
   - Run `cd frontend && npm install` first, then `npm start`.
 - Backend cannot connect to DB
-  - For SQLite: ensure `DB_TYPE=sqlite`, restart backend, and check the DB file exists.
-  - For MySQL: verify credentials and that MySQL is running; confirm `DB_TYPE=mysql`.
+  - SQLite: ensure `DB_TYPE=sqlite`, restart backend, and check the DB file exists.
 - Email not sending
   - Use a Gmail App Password and allow SMTP; check `EMAIL_USER`/`EMAIL_PASSWORD`.
 - Port conflicts
   - Frontend: 3000, Backend: 3001. Close competing processes or change ports.
 
----
-
-## License
-All rights reserved.
