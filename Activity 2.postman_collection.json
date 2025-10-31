@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "95c85d94-b68c-4fd3-affc-54ec703fb705",
+		"name": "Activity 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48814926",
+		"_collection_link": "https://blickyy213285-2421396.postman.co/workspace/0624e171-d57d-44ee-81a6-c7b72ccf849f/collection/48814926-95c85d94-b68c-4fd3-affc-54ec703fb705?action=share&source=collection_link&creator=48814926"
+	},
+	"item": [
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"username\": \"thea123\", \"email\": \"patrickraymondbenito@gmail.com\", \"password\": \"pass1234\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"auth",
+						"register"
+					]
+				},
+				"description": "This will create a new account"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a New Note",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoZWExMjMiLCJzdWIiOjMsImlhdCI6MTc2MDY4Mjk3NywiZXhwIjoxNzYwNjg2NTc3fQ.IC8uVe8oZGUdpehZiJMSTjes3lmLncHrTRQfKUsErdQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"title\": \"Test\", \"content\": \"Hello\", \"color\": \"default\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/notes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"notes"
+					]
+				},
+				"description": "This will create a new note"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Notes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoZWExMjMiLCJzdWIiOjMsImlhdCI6MTc2MDY4Mjk3NywiZXhwIjoxNzYwNjg2NTc3fQ.IC8uVe8oZGUdpehZiJMSTjes3lmLncHrTRQfKUsErdQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/notes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"notes"
+					]
+				},
+				"description": "This will show all notes that has been created"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a note",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoZWExMjMiLCJzdWIiOjMsImlhdCI6MTc2MDY4Mjk3NywiZXhwIjoxNzYwNjg2NTc3fQ.IC8uVe8oZGUdpehZiJMSTjes3lmLncHrTRQfKUsErdQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"title\": \"Updated title\",\r\n\"content\": \"Updated content\",\r\n\"color\": \"yellow\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/notes/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"notes",
+						"5"
+					]
+				},
+				"description": "This updates a selected note"
+			},
+			"response": []
+		},
+		{
+			"name": "Check Updated List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/notes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"notes"
+					]
+				},
+				"description": "This just recalls the notes again to see if the note was updated"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Note",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoZWExMjMiLCJzdWIiOjMsImlhdCI6MTc2MDY4Mjk3NywiZXhwIjoxNzYwNjg2NTc3fQ.IC8uVe8oZGUdpehZiJMSTjes3lmLncHrTRQfKUsErdQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/notes/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"notes",
+						"5"
+					]
+				},
+				"description": "This deletes a selected note"
+			},
+			"response": []
+		},
+		{
+			"name": "Check Deleted Notes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/notes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"notes"
+					]
+				},
+				"description": "checks if the notes was deleted"
+			},
+			"response": []
+		}
+	]
+}
